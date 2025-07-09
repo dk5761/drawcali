@@ -1,0 +1,117 @@
+@import 'open-color/open-color.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+  :root {
+    /* Light theme - using open-color for consistent palette */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 211 100% 47%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 211 100% 47%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 100% 67%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 211 100% 47%;
+    --radius: 0.5rem;
+    
+    /* Excalidraw specific color mappings using open-color */
+    --color-primary: var(--oc-blue-6);
+    --color-primary-darker: var(--oc-blue-7);
+    --color-primary-darkest: var(--oc-blue-8);
+    --color-primary-light: var(--oc-blue-1);
+    --color-primary-lighter: var(--oc-blue-0);
+    --color-surface-low: var(--oc-gray-0);
+    --color-surface-lower: var(--oc-white);
+    --color-text: var(--oc-gray-9);
+    --color-text-secondary: var(--oc-gray-7);
+    --color-brand: var(--oc-violet-6);
+    --color-brand-hover: var(--oc-violet-7);
+    --color-success: var(--oc-green-6);
+    --color-warning: var(--oc-orange-6);
+    --color-danger: var(--oc-red-6);
+    --color-danger-hover: var(--oc-red-7);
+  }
+
+  .dark {
+    /* Dark theme - using open-color dark variants */
+    --background: 0 0% 9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 211 100% 60%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 211 100% 60%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 100% 67%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 211 100% 60%;
+    
+    /* Excalidraw specific color mappings for dark theme */
+    --color-primary: var(--oc-blue-4);
+    --color-primary-darker: var(--oc-blue-5);
+    --color-primary-darkest: var(--oc-blue-6);
+    --color-primary-light: var(--oc-gray-8);
+    --color-primary-lighter: var(--oc-gray-9);
+    --color-surface-low: var(--oc-gray-8);
+    --color-surface-lower: var(--oc-gray-9);
+    --color-text: var(--oc-gray-0);
+    --color-text-secondary: var(--oc-gray-3);
+    --color-brand: var(--oc-violet-4);
+    --color-brand-hover: var(--oc-violet-5);
+    --color-success: var(--oc-green-4);
+    --color-warning: var(--oc-orange-4);
+    --color-danger: var(--oc-red-4);
+    --color-danger-hover: var(--oc-red-5);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Excalidraw theme customization using open-color */
+.excalidraw {
+  --color-primary: var(--color-primary);
+  --color-primary-darker: var(--color-primary-darker);
+  --color-primary-darkest: var(--color-primary-darkest);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-lighter: var(--color-primary-lighter);
+  --color-surface-low: var(--color-surface-low);
+  --color-surface-lower: var(--color-surface-lower);
+  --color-text: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-brand: var(--color-brand);
+  --color-brand-hover: var(--color-brand-hover);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger: var(--color-danger);
+  --color-danger-hover: var(--color-danger-hover);
+}
