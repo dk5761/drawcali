@@ -1,48 +1,38 @@
-version: "3.8"
-
 services:
   backend:
     build:
       context: ./Backend
       dockerfile: Dockerfile
     container_name: excalidraw-backend
+    restart: unless-stopped
     ports:
-      - "8080:8080"
+      # Expose securely to the host machine only for Nginx to proxy to
+      - "127.0.0.1:8080:8080"
     environment:
       - PORT=8080
-      - MONGODB_URI=mongodb://mongo:27017
+      # --- THIS IS THE KEY CHANGE ---
+      # We point to the core-mongo service and use the credentials
+      - MONGODB_URI=mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASSWORD}@core-mongo:27017/?authSource=admin
       - DB_NAME=excalidraw
-      - JWT_SECRET=a-very-secret-key
-    depends_on:
-      - mongo
+      - JWT_SECRET=${EXCALIDRAW_JWT_SECRET}
     networks:
-      - app-network
+      - shared-network
 
   frontend:
     build:
       context: ./Frontend
       dockerfile: Dockerfile
     container_name: excalidraw-frontend
+    restart: unless-stopped
     ports:
-      - "3008:80"
+      # Expose securely to the host machine only for Nginx to proxy to
+      - "127.0.0.1:3008:80"
     depends_on:
       - backend
     networks:
-      - app-network
+      - shared-network
 
-  mongo:
-    image: mongo:latest
-    container_name: excalidraw-mongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-    networks:
-      - app-network
-
-volumes:
-  mongo-data:
-
+# All services in this file will join the shared network
 networks:
-  app-network:
-    driver: bridge
+  shared-network:
+    external: true
