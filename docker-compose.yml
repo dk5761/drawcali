@@ -24,6 +24,8 @@ services:
       dockerfile: Dockerfile
     container_name: excalidraw-frontend
     restart: unless-stopped
+    args:
+      - VITE_APP_BACKEND_URL=${EXCALIDRAW_BACKEND_URL}
     ports:
       # Expose securely to the host machine only for Nginx to proxy to
       - "127.0.0.1:3008:80"

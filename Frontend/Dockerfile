@@ -1,6 +1,9 @@
 # Stage 1: Build the React app
 FROM node:18-alpine AS builder
 
+ARG VITE_APP_BACKEND_URL
+ENV VITE_APP_BACKEND_URL=$VITE_APP_BACKEND_URL
+
 WORKDIR /app
 
 # Copy package.json and pnpm-lock.yaml
