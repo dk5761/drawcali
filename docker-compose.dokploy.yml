@@ -6,8 +6,8 @@ services:
     restart: unless-stopped
     environment:
       - PORT=8080
-      - MONGODB_URI=mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASSWORD}@mongo:27017/excalidraw
-      - DB_NAME=excalidraw
+      - MONGODB_URI=mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASSWORD}@mongo:27017/admin
+      - DB_NAME=admin
       - JWT_SECRET=${EXCALIDRAW_JWT_SECRET}
     networks:
       - dokploy-network
