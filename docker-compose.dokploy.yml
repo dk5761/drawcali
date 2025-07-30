@@ -13,7 +13,7 @@ services:
       - dokploy-network
     labels:
       - traefik.enable=true
-      - traefik.http.routers.ex-backend.rule=Host(`exd.drshnk.com`) && PathPrefix(`/api`)
+      - traefik.http.routers.ex-backend.rule=Host(`exd.backend.drshnk.com`) && PathPrefix(`/api`)
       - traefik.http.routers.ex-backend.entrypoints=websecure
       - traefik.http.routers.ex-backend.tls.certResolver=letsencrypt
       - traefik.http.services.ex-backend.loadbalancer.server.port=8080
@@ -23,7 +23,7 @@ services:
       context: ./Frontend
       dockerfile: Dockerfile
       args:
-        - VITE_APP_BACKEND_URL=${EXCALIDRAW_BACKEND_URL:-https://excalidraw.tools.drshnk.com/api}
+        - VITE_APP_BACKEND_URL=${EXCALIDRAW_BACKEND_URL:-https://exd.backend.drshnk.com/api}
     restart: unless-stopped
     depends_on:
       - backend
