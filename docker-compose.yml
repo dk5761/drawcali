@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     ports:
       # Expose securely to the host machine only for Nginx to proxy to
-      - "127.0.0.1:8080:8080"
+      - 8080
     environment:
       - PORT=8080
       # --- THIS IS THE KEY CHANGE ---
@@ -29,7 +29,8 @@ services:
 
     ports:
       # Expose securely to the host machine only for Nginx to proxy to
-      - "127.0.0.1:3008:80"
+      - 3008
+      - 80
     depends_on:
       - backend
     networks:
