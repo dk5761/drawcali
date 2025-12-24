@@ -16,7 +16,7 @@ services:
       - DB_NAME=excalidraw
       - JWT_SECRET=${EXCALIDRAW_JWT_SECRET}
     networks:
-      - shared-network
+      - dokploy-network
 
   frontend:
     build:
@@ -33,9 +33,9 @@ services:
     depends_on:
       - backend
     networks:
-      - shared-network
+      - dokploy-network
 
 # All services in this file will join the shared network
 networks:
-  shared-network:
+  dokploy-network:
     external: true
